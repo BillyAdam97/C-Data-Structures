@@ -3,6 +3,7 @@
 struct Stack* createS()
 {
     struct Stack* s = (struct Stack*)malloc(sizeof(struct Stack));
+    if (!s) return NULL;
     s->size=0;
     s->head=NULL;
     return s;
@@ -12,12 +13,14 @@ void pushS(struct Stack* s, int val)
 {
     if (!s->head) {
         s->head = (struct SNode*)malloc(sizeof(struct SNode));
+        if (!s->head) return;
         s->head->next = NULL;
         s->head->val = val;
         s->size++;
         return;
     }
     struct SNode* tmp = (struct SNode*)malloc(sizeof(struct SNode));
+    if (!tmp) return;
     tmp->val = val;
     tmp->next = s->head;
     s->head = tmp;

@@ -3,6 +3,7 @@
 struct LinkedList* createLL()
 {
     struct LinkedList* list = (struct LinkedList*)malloc(sizeof(struct LinkedList));
+    if (!list) return NULL;
     list->head=NULL;
     list->tail=NULL;
     list->size=0;
@@ -12,6 +13,7 @@ struct LinkedList* createLL()
 void addHead(int value, struct LinkedList* list)
 {
     struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    if (!node) return;
     node->val = value;
     node->next = NULL;
     node->prev = NULL;
@@ -36,6 +38,7 @@ void addTail(int value, struct LinkedList* list)
     }
     else {
         struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+        if (!node) return;
         node->val = value;
         node->next = NULL;
         node->prev = NULL;
@@ -63,6 +66,7 @@ void addAtIndex(int value, int index, struct LinkedList* list)
         else half =0;
         struct Node* tmp = NULL;
         struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+        if (!node) return;
         node->val = value;
         node->next = NULL;
         node->prev = NULL;

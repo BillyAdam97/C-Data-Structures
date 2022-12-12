@@ -3,9 +3,14 @@
 struct HashMap* createHM(int sizeofHM)
 {
     struct HashMap* hm = (struct HashMap*)malloc(sizeof(struct HashMap));
+    if (!hm) return NULL;
     hm->size=sizeofHM;
     hm->items=0;
     hm->arr = (struct Bucket*)calloc(sizeofHM, sizeof(struct Bucket));
+    if (!hm->arr) {
+        free(hm);
+        return NULL;
+    }
     struct Bucket* tmp = hm->arr;
     for (int i=0; i<sizeofHM; i++, tmp++) {
         tmp->head=NULL;
@@ -58,6 +63,7 @@ void insertHM(struct HashMap* hm, uint64_t key, int value)
     struct BucketNode* curr = tmp->head;
     if (!curr) {
         curr = (struct BucketNode*)malloc(sizeof(struct BucketNode));
+        if (!curr) return;
         curr->key = key;
         curr->value = value;
         curr->next = NULL;
@@ -73,6 +79,7 @@ void insertHM(struct HashMap* hm, uint64_t key, int value)
         curr=curr->next;
     }
     curr->next = (struct BucketNode*)malloc(sizeof(struct BucketNode));
+    if (!curr->next) return;
     curr=curr->next;
     curr->key = key;
     curr->value = value;

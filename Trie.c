@@ -3,6 +3,7 @@
 struct Trie* createTrie(char c)
 {
     struct Trie* trie = (struct Trie*)malloc(sizeof(struct Trie));
+    if (!trie) return NULL;
     trie->letter = c;
     trie->isWord = 0;
     for (int i=0; i<26; i++) {

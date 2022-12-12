@@ -3,6 +3,7 @@
 struct Queue* createQ()
 {
     struct Queue* q = (struct Queue*)malloc(sizeof(struct Queue));
+    if (!q) return NULL;
     q->head=NULL;
     q->tail=NULL;
     q->size=0;
@@ -13,6 +14,7 @@ void pushQ(struct Queue* q, int val)
 {
     if (!q->head) {
         struct QNode* tmp = (struct QNode*)malloc(sizeof(struct QNode));
+        if (!tmp) return;
         tmp->next=NULL;
         tmp->val=val;
         q->head=tmp;
@@ -21,6 +23,7 @@ void pushQ(struct Queue* q, int val)
         return;
     }
     struct QNode* tmp = (struct QNode*)malloc(sizeof(struct QNode));
+    if (!tmp) return;
     tmp->val = val;
     tmp->next=q->head;
     q->head=tmp;

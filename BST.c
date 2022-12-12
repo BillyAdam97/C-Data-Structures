@@ -3,6 +3,7 @@
 struct TreeNode* createTreeNode(int val)
 {
     struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    if (!node) return NULL;
     node->val=val;
     node->left=NULL;
     node->right=NULL;
