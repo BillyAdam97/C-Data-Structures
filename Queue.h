@@ -4,20 +4,20 @@
 #include <stdio.h>
 
 struct QNode {
-    int val;
+    void* val;
     struct QNode* next;
 };
 
-struct Queue {
+typedef struct Queue {
     int size;
     struct QNode* head;
     struct QNode* tail;
-};
+} Queue;
 
 struct Queue* createQ();
-void pushQ(struct Queue* q, int val);
-int frontQ(struct Queue* q);
-int backQ(struct Queue* q);
+void pushQ(struct Queue* q, void* val);
+void* frontQ(struct Queue* q);
+void* backQ(struct Queue* q);
 void popQ(struct Queue* q);
 int sizeQ(struct Queue* q);
 int emptyQ(struct Queue* q);

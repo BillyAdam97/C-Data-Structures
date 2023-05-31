@@ -10,7 +10,7 @@ struct Queue* createQ()
     return q;
 }
 
-void pushQ(struct Queue* q, int val)
+void pushQ(struct Queue* q, void* val)
 {
     if (!q->head) {
         struct QNode* tmp = (struct QNode*)malloc(sizeof(struct QNode));
@@ -30,16 +30,16 @@ void pushQ(struct Queue* q, int val)
     q->size++;
 }
 
-int frontQ(struct Queue* q)
+void* frontQ(struct Queue* q)
 {
     if (q->head) return q->head->val;
-    return -1;
+    return NULL;
 }
 
-int backQ(struct Queue* q)
+void* backQ(struct Queue* q)
 {
     if (q->tail) return q->tail->val;
-    return -1;
+    return NULL;
 }
 
 void popQ(struct Queue* q)

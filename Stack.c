@@ -9,7 +9,7 @@ struct Stack* createS()
     return s;
 }
 
-void pushS(struct Stack* s, int val)
+void pushS(struct Stack* s, void* val)
 {
     if (!s->head) {
         s->head = (struct SNode*)malloc(sizeof(struct SNode));
@@ -27,12 +27,12 @@ void pushS(struct Stack* s, int val)
     s->size++;
 }
 
-int topS(struct Stack* s)
+void* topS(struct Stack* s)
 {
     if (s->head) {
         return s->head->val;
     }
-    return -1;
+    return NULL;
 }
 
 void popS(struct Stack* s)

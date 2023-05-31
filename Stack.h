@@ -4,18 +4,18 @@
 #include <stdio.h>
 
 struct SNode {
-    int val;
+    void* val;
     struct SNode* next;
 };
 
-struct Stack {
+typedef struct Stack {
     int size;
     struct SNode* head;
-};
+} Stack;
 
 struct Stack* createS();
-void pushS(struct Stack* s, int val);
-int topS(struct Stack* s);
+void pushS(struct Stack* s, void* val);
+void* topS(struct Stack* s);
 void popS(struct Stack* s);
 int sizeS(struct Stack* s);
 int emptyS(struct Stack* s);
