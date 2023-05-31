@@ -25,8 +25,8 @@ void pushQ(struct Queue* q, void* val)
     struct QNode* tmp = (struct QNode*)malloc(sizeof(struct QNode));
     if (!tmp) return;
     tmp->val = val;
-    tmp->next=q->head;
-    q->head=tmp;
+    q->tail->next=tmp;
+    q->tail=tmp;
     q->size++;
 }
 
